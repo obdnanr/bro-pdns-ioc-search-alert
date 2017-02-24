@@ -24,12 +24,12 @@ finalhit = open('finalIOChit.csv', 'r')
 
 # Open finalIOChit.csv, check the watchfile for @'s, send alert if @ isn't present
 # and send alert only if the last hit is == today. 
-for hit in finalhit:
-    for match in patn.findall(hit):
+for theline in finalhit :
+    for match in patn.findall(theline):
         val = datetime.strptime(match, '%Y-%m-%d')
         if val == today:
-            watchfile.write(hit)
-            if hit != watchfile.read():
+            if theline not in watchfile:
+                watchfile.write(theline)
                 message = """From:server <server@company.com>
 To: User <user@company.com>
 Subject: Passive DNS hit 
