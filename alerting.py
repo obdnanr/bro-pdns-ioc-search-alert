@@ -18,12 +18,11 @@ receivers = ['user@company.com']
 # Compile date regex and already emailed regex
 patn = re.compile('20\d{2}-\d{2}-\d{2}')
 
-# File that will be watched for @ symbol, so it knows it already sent an email
 watchfile = open('watchfile.csv', 'r+w')
 finalhit = open('finalIOChit.csv', 'r')
 
-# Open finalIOChit.csv, check the watchfile for @'s, send alert if @ isn't present
-# and send alert only if the last hit is == today. 
+# Send alert only if the last hit is == today.
+# Open finalIOChit.csv, check the fianlIOChit to see if it's in watchfile, if so don't email/
 for theline in finalhit :
     for match in patn.findall(theline):
         val = datetime.strptime(match, '%Y-%m-%d')
