@@ -22,7 +22,7 @@ watchfile = open('watchfile.csv', 'r+w')
 finalhit = open('finalIOChit.csv', 'r')
 
 # Send alert only if the last hit is == today.
-# Open finalIOChit.csv, check the fianlIOChit to see if it's in watchfile, if so don't email/
+# Open finalIOChit.csv, check the fianlIOChit to see if it's in watchfile, if so don't email.
 for theline in finalhit :
     for match in patn.findall(theline):
         val = datetime.strptime(match, '%Y-%m-%d')
